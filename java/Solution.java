@@ -10,29 +10,53 @@ public class Solution {
     int comparisonCount;
     int[] sortingArray;
     int[] inputArray;
-    
+
+    //public static void main(String[] args)
+    //{
+    //   instance = Solution();
+    //}
+
     Solution(int[] input)
     {
         inputArray = input;
         comparisonCount = 0;
     }
 
-    
-    public static void main(String[] args) {
-        // TODO code application logic here
-        //System.out.println("Sorting!");
-    }
-    
     public void mergeSort(int p, int r) {
         // TODO
     }
-    
+
     public void insertionSort() {
-        // TODO
-    }
-    
+    //     sortingArray = new int[inputArray.length];
+    //     sortingArray[0] = inputArray[0];
+    //     int j = 0;
+    //     comparisonCount = 1;
+    //     for(int i = 1;i < inputArray.length;i++)
+    //     {
+    //       for(j=0;j < i;j++)
+    //       {
+    //          comparisonCount++;
+    //          if(sortingArray[j] > inputArray[i])
+    //          {
+    //             break;
+    //          }
+    //       }
+    //       for(k = i; k > j ;k--)
+    //       {
+    //          sortingArray[k] = sortingArray[k-1];
+    //       }
+    //       sortingArray[k] = inputArray[i];
+    //     }
+    //     for(int i = 0;i< sortingArray.length; i++)
+    //     {
+    //        System.out.println(sortingArray[i]);
+    //     }
+    // }
+        sortingArray = new int[]{1, 2, 3, 4};
+        comparisonCount = 3;
+
     public  void heapSort()  {
         // TODO
     }
-    
+
 }

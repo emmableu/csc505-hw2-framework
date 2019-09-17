@@ -7,6 +7,26 @@ import org.junit.Assert;
  * @author yv
  */
 public class SortingTest {
+    /**
+     * Test of insertionSort method, of class Sorting.
+     */
+    @Test
+    public void testInsertionSort() {
+        System.out.println("Testing insertionSort.dddddd..\n");
+        int[] nums1 = new int[]{ 3, 6, 1 };
+        int[] expResult1 = new int[]{ 1, 3, 6 };
+        Solution instance = new Solution(nums1);
+        instance.insertionSort();
+        Assert.assertArrayEquals(expResult1, instance.sortingArray);
+        Assert.assertEquals(3, instance.comparisonCount);
+
+        int[] nums2 = new int[]{ 7, 3, 1, 5, 6, 2, 4 };
+        int[] expResult2 = new int[]{ 1, 2, 3, 4, 5, 6, 7 };
+        instance = new Solution(nums2);
+        instance.insertionSort();
+        Assert.assertArrayEquals(expResult2, instance.sortingArray);
+        Assert.assertEquals(16, instance.comparisonCount);
+    }
 
     /**
      * Test of mergeSort method, of class Sorting.
@@ -29,26 +49,6 @@ public class SortingTest {
         Assert.assertEquals(20, instance.comparisonCount);
     }
 
-    /**
-     * Test of insertionSort method, of class Sorting.
-     */
-    @Test
-    public void testInsertionSort() {
-        System.out.println("Testing mergeSort...\n");
-        int[] nums1 = new int[]{ 3, 6, 1 };
-        int[] expResult1 = new int[]{ 1, 3, 6 };
-        Solution instance = new Solution(nums1);
-        instance.insertionSort();
-        Assert.assertArrayEquals(expResult1, instance.sortingArray);
-        Assert.assertEquals(3, instance.comparisonCount);
-
-        int[] nums2 = new int[]{ 7, 3, 1, 5, 6, 2, 4 };
-        int[] expResult2 = new int[]{ 1, 2, 3, 4, 5, 6, 7 };
-        instance = new Solution(nums2);
-        instance.insertionSort();
-        Assert.assertArrayEquals(expResult2, instance.sortingArray);
-        Assert.assertEquals(16, instance.comparisonCount);
-    }
 
     /**
      * Test of heapSort method, of class Sorting.
