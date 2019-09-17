@@ -11,7 +11,7 @@ class Solution:
     def merge_sort(self, p, r):
         if p < r:
             q = (p+r)//2
-            print("q: ",q)
+            # print("q: ",q)
             self.merge_sort(p, q)
             self.merge_sort(q+1, r)
             self.merge(p, q, r)
@@ -24,7 +24,7 @@ class Solution:
             left.append(self.sorting_array[i])
         for j in range(q+1, r+1):
             right.append(self.sorting_array[j])
-        print('left: ', left, 'right: ', right)
+        # print('left: ', left, 'right: ', right)
         left.append(float('inf'))
         right.append(float('inf'))
         i, j = 0, 0
@@ -37,38 +37,51 @@ class Solution:
             else:
                 j = j + 1
 
-    def heapify(self, heap, parent):
+    def heapify(self, parent, heap_size):
+
     # This is the reverse from the max_heapify.
-        l = (parent+1)*2-1
-        r = (parent+1)*2
+        l = (parent)*2+1
+        r = (parent)*2+2
+        try:
+            print('parent: ', self.sorting_array[parent], "left_child: ", self.sorting_array[l], "right_child: ", self.sorting_array[r])
+        except:
+            pass
         largest = parent
-        if l < len(heap):
-            smaller_element, larger_element = self.compare(heap[l], heap[parent])
-            if (larger_element == heap[l]):
+        if l < heap_size:
+            smaller_element, larger_element = self.compare(self.sorting_array[l], self.sorting_array[parent])
+            if (larger_element == self.sorting_array[l]):
                 largest = l
-        if r < len(heap):
-            smaller_element, larger_element = self.compare(heap[r], heap[parent])
-            if (larger_element == heap[r]):
+        if r < heap_size:
+            smaller_element, larger_element = self.compare(self.sorting_array[r], self.sorting_array[largest])
+            if (larger_element == self.sorting_array[r]):
                 largest = r
 
         if largest!=parent:
-            heap[largest], heap[parent] = heap[parent], heap[largest]
+            print('largest is not parent')
+            print('before swap: ',  self.sorting_array)
+            temp =  self.sorting_array[largest]
+            self.sorting_array[largest] = self.sorting_array[parent]
+            self.sorting_array[parent]= temp
+            print('after swap: ', self.sorting_array)
             # Exchange heap[largest], heap[parent]
-            self.heapify(heap, largest)
+            self.heapify(largest, heap_size)
 
     def build_heap(self):
-        for i in reversed(range((len(self.sorting_array)))):
-            self.heapify(self.sorting_array, i)
+        for i in reversed(range((len(self.sorting_array)//2))):
+            # print('i: ', i)
+            self.heapify(i, len(self.sorting_array))
 
     def heap_sort(self):
         self.build_heap()
-        for i in range(2,len(self.sorting_array)+2):
-            self.sorting_array.append(self.sorting_array[0])
-            self.sorting_array[0] = self.sorting_array[-i]
-            self.sorting_array.pop(-i)
-            next_node = self.sorting_array[:-i+1]
-            self.heapify(next_node,0)
-            self.sorting_array[:-i+1] = next_node
+        print(self.sorting_array)
+
+        for i in reversed(range(1, len(self.sorting_array))):
+            temp = self.sorting_array[i]
+            self.sorting_array[i] = self.sorting_array[0]
+            self.sorting_array[0] = temp
+            print("i: ", i, "self.sorting_array: ", self.sorting_array)
+            self.heapify( 0, i)
+            print('after heapify: ', self.sorting_array)
 
 
     def insertion_sort(self):
